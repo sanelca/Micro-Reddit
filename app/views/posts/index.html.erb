@@ -1,0 +1,22 @@
+<h1>Post List</h1>
+<table>
+  <tr>
+    <td>Title</td>
+    <td>Author</td>
+    <td>Options</td>
+  </tr>
+  <%
+  @posts.each do |post|
+  author = User.find(post.user_id)
+  %>
+  <tr>
+    <td><%= link_to post.title, post_path(post) %></td>
+    <td><%= link_to author.name, controller: "users", action: "show", id: author.id %></td>
+    <td>
+      <%= link_to "delete", post_path(post), method: :delete, data: {confirm: "Really delete the post?"} %>
+      <%= link_to "edit", edit_post_path(post) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "Create a New Post", new_post_path, class: "new_post" %>
