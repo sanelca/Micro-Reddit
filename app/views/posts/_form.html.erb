@@ -1,8 +1,8 @@
 <h3>Create a post</h3>
 <%= form_for [ @user, @post ] do |f| %>
+  <%= f.hidden_field :user_id, value: @user.id %>
   <p>
     <%= f.label :title, "Name"  %>
-
     <%= f.text_field :title %>
   </p>
   <p>
