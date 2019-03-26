@@ -1,0 +1,8 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+<%= link_to "<< Back to Post List", posts_path %>
+<%= link_to "delete", post_path(@post), method: :delete, data: {confirm: "Really delete the user?"} %>
+<%= link_to "edit", edit_post_path(@post) %>
+<%= render partial: 'comments/form' %>
+<h3>Comments (<%= @post.comments.size %>)</h3>
+<%= render partial: 'posts/comment', collection: @post.comments %>
